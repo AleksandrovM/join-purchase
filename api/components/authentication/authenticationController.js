@@ -17,8 +17,8 @@ router.post('/register', async (req, res, next) => {
 router.post('/login', async (req, res, next) => {
   try {
     validationHelper.validate(req.body, LoginValidationModel);
-    let loginInfo = await service.login(req.body);
-    res.send(loginInfo);
+    let tokens = await service.login(req.body);
+    res.send(tokens);
   } catch (error) {
     next(error);
   }
